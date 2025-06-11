@@ -1,0 +1,60 @@
+# List<String> fruits = new ArrayList<>();
+- Maintains insertion order
+
+# Set<String> uniqueFruits = new HashSet<>(); // basically hash map with Set ,
+- No duplicates
+- No index-based access
+- Use TreeSet for sorting
+
+# Map<String, Integer> ages = new HashMap<>();
+- Keys are unique
+- Values can be duplicated
+- Use TreeMap for sorted keys, LinkedHashMap for order
+
+# Array
+int[] numbers = {1, 2, 3};
+System.out.println(numbers[1]);  // 2
+
+# ArrayList
+List<Integer> list = new ArrayList<>();
+list.add(10);
+list.add(20);
+System.out.println(list.get(0));  // 10
+- re-sizable
+- .add() , .get()
+
+# HashMap (key-value lookup)
+Map<String, String> capitals = new HashMap<>();
+capitals.put("India", "Delhi");
+capitals.put("USA", "Washington");
+
+System.out.println(capitals.get("India"));  // Delhi
+
+# Lambda Expressions (Shorter Functions)
+List<String> names = Arrays.asList("A", "B", "C");
+names.forEach(name -> System.out.println(name));
+
+#  Stream API (Functional-style data processing)
+List<Integer> nums = Arrays.asList(1, 2, 3, 4, 5);
+List<Integer> evens = nums.stream()
+                          .filter(n -> n % 2 == 0)
+                          .toList();
+
+System.out.println(evens);  // [2, 4]
+-
+List<String> names = Arrays.asList("john", "alice");
+List<String> upper = names.stream()
+                          .map(String::toUpperCase)
+                          .toList();
+System.out.println(upper);  // [JOHN, ALICE]
+
+# reduce() – Aggregate to single value
+int sum = nums.stream()
+              .reduce(0, (a, b) -> a + b);
+
+System.out.println(sum);  // 15
+
+# collect() – Convert stream to list/set/map
+List<String> longNames = names.stream()
+                              .filter(name -> name.length() > 3)
+                              .collect(Collectors.toList());
